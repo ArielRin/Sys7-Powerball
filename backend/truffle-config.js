@@ -11,7 +11,7 @@ module.exports = {
     inf_Lottery_goerli: {
       network_id: 5,
       gasPrice: 100000000000,
-      provider: new HDWalletProvider(fs.readFileSync('/Users/rehanganapathy/Desktop/key.txt', 'utf-8'), "https://goerli.infura.io/v3/API_KEY")
+      provider: new HDWalletProvider('KEY', "https://goerli.infura.io/v3/API_KEY")
     }
   }
 };
