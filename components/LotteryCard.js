@@ -470,9 +470,12 @@ const LotteryCard = () => {
   return (
     <div className={style.wrapper}>
       <div className={style.title}>
-        PWR-Ball 100 Draw{' '}
-        <span className={style.textAccent}>#{lotteryId ? lotteryId : '0'}</span>
+        SYSTEM7
       </div>
+        <div className={style.title}>
+          PWR-Ball 100 Draw{' '}
+          <span className={style.textAccent}>#{lotteryId ? lotteryId : '0'}</span>
+        </div>
       <div className={style.paragragh}>
         Welcome to the System 7 PWR-Ball To enter, youll need 100 PWR tokens. Drawn daily. If youre feeling lucky, you could be the next winner of the PWR-Ball jackpot
       </div>
