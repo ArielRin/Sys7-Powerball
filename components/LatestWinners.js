@@ -259,7 +259,7 @@ const LatestWinners = () => {
       )}
     </div>
     <div className={style.paragragh}>
-      Congratulations!!
+      Congratulations. You are the latest System 7 PWRBall winner!
     </div>
     </div>
   );

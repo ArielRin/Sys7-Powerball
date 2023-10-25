@@ -3,7 +3,8 @@ import LotteryCard from '../components/LotteryCard'
 import LatestWinners from '../components/LatestWinners'
 import Jackpot from '../components/Jackpot'
 import Table from '../components/Table'
-import EntryList from '../components/EntryList'
+import EntryCount from '../components/EntryCount'
+import YourEntries from '../components/YourEntries'
 
 import style from '../styles/Home.module.css'
 export default function Home() {
@@ -12,8 +13,9 @@ export default function Home() {
       <Header />
       <LotteryCard />
       <Jackpot />
+      <YourEntries />
       <LatestWinners />
-      <EntryList />
+      <EntryCount />
     </div>
   )
 }

@@ -64,14 +64,10 @@ const PlayerList = () => {
   return (
     <div className={style.wrapper}>
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}>
-      <h2 style={{ color: 'white' }}>List of Current Players:</h2>
+      <h2 style={{ color: 'white' }}>Your Tickets</h2>
       {isConnected ? (
         <div>
-          <ul>
-            {players.map((player, index) => (
-              <li key={index} style={{ color: 'white' }}>{player}</li>
-            ))}
-          </ul>
+          <p style={{ color: 'white' }}>You have {walletCount} tickets in the draw.</p>
         </div>
       ) : (
         <button onClick={connectWallet}>Connect Wallet</button>
