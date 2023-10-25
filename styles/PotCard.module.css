@@ -28,6 +28,13 @@
   text-align: center;
   flex: 1;
 }
+.paragragh {
+  font-size: 1.0rem;
+  font-weight: bolder;
+  color: #fff;
+  text-align: center;
+  flex: 1;
+}
 
 .potAmount {
   font-size: 1.5rem;

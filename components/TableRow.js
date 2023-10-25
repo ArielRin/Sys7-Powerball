@@ -1,13 +1,14 @@
-import style from '../styles/TableRow.module.css'
-import truncateEthAddress from 'truncate-eth-address'
+// TableRow.js
+import React from 'react';
+import style from '../styles/TableRow.module.css';
+
 const TableRow = ({ player }) => {
   return (
-    <div className={style.wrapper}>
-      <div className={style.address}>{truncateEthAddress(player)}</div>
-      <div className={style.ethAmmount}>
-        <span className={style.goldAccent}>+0.015 ETH</span>
-      </div>
+    <div className={style.row}>
+      <div className={style.addressCell}>{player.address}</div>
+      <div className={style.amountCell}>{player.amount} ETH</div>
     </div>
-  )
-}
-export default TableRow
+  );
+};
+
+export default TableRow;

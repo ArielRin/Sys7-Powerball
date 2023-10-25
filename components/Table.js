@@ -1,3 +1,30 @@
+// Table.js
+{/* import React from 'react';
+import style from '../styles/Table.module.css';
+import TableRow from './TableRow';
+import { useTableContext } from './TableContext';
+
+const Table = () => {
+  const { players } = useTableContext();
+
+  return (
+    <div className={style.wrapper}>
+      <div className={style.tableHeader}>
+        <div className={style.addressTitle}>💳 User Address</div>
+        <div className={style.amountTitle}>💲 Amount</div>
+      </div>
+      <div className={style.rows}>
+        {players.map((player) => (
+          <TableRow key={player.address} player={player} />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default Table; */}
+
+
 import style from '../styles/Table.module.css'
 import TableRow from './TableRow'
 const Table = () => {
