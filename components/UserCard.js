@@ -7,7 +7,7 @@ const UserCard = ({ address }) => {
         className={`${style.welcome} ${style.loginBtn}`}
       //onClick={disconnectWalletHandler}
       >
-        👋 Welcome,{' '}
+        {' '}
         <span className={style.accentColor}>{truncateEthAddress(address)}</span>
       </div>
     </div>

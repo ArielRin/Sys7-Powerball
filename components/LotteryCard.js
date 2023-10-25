@@ -5,12 +5,12 @@ import { useEffect, useState } from 'react';
 import Web3 from 'web3';
 
 const LotteryCard = () => {
-  const { lotteryId, lastWinner, lotteryPot, enterLottery, pickWinner } =
+  const { lastWinner, lotteryPot, enterLottery, pickWinner } =
     useAppContext();
   const [web3, setWeb3] = useState(null);
   const [ players, setPlayers] = useState([]);
   const [latestWinner, setLatestWinner] = useState(null); // To store the latest winner's address
-
+  const [lotteryId, setLotteryId] = useState(0); // To store the current lottery ID
   // Initialize Web3 and set it to state
   useEffect(() => {
     async function initWeb3() {
@@ -245,232 +245,231 @@ const LotteryCard = () => {
     }
   };
 
-  // Function to fetch and display the total players
-  const fetchPlayers = async () => {
-    if (web3) {
-      const contractAddress = '0xd7EA92A63371cC9324E9Fde3F69c7aDfBd77BAEc'; // Replace with your contract address
+    // Function to fetch and display the current lottery ID
+    const fetchLotteryId = async () => {
+      if (web3) {
+        const contractAddress = '0xd7EA92A63371cC9324E9Fde3F69c7aDfBd77BAEc'; // Replace with your contract address
 
-      const contractABI = [
-	{
-		"inputs": [
-			{
-				"internalType": "address payable",
-				"name": "_treasury",
-				"type": "address"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_initialMinimumEntryFee",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "nonpayable",
-		"type": "constructor"
-	},
-	{
-		"inputs": [],
-		"name": "enter",
-		"outputs": [],
-		"stateMutability": "payable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "getBalance",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "getLotteryId",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "getPlayers",
-		"outputs": [
-			{
-				"internalType": "address payable[]",
-				"name": "",
-				"type": "address[]"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "getRandomNumber",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "getWinners",
-		"outputs": [
-			{
-				"internalType": "address[]",
-				"name": "",
-				"type": "address[]"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "lotteryId",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "minimumEntryFee",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "owner",
-		"outputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "pickWinner",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"name": "players",
-		"outputs": [
-			{
-				"internalType": "address payable",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "treasury",
-		"outputs": [
-			{
-				"internalType": "address payable",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "newFee",
-				"type": "uint256"
-			}
-		],
-		"name": "updateMinimumEntryFee",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"name": "winners",
-		"outputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	}
-];
+        const contractABI = [
+  	{
+  		"inputs": [
+  			{
+  				"internalType": "address payable",
+  				"name": "_treasury",
+  				"type": "address"
+  			},
+  			{
+  				"internalType": "uint256",
+  				"name": "_initialMinimumEntryFee",
+  				"type": "uint256"
+  			}
+  		],
+  		"stateMutability": "nonpayable",
+  		"type": "constructor"
+  	},
+  	{
+  		"inputs": [],
+  		"name": "enter",
+  		"outputs": [],
+  		"stateMutability": "payable",
+  		"type": "function"
+  	},
+  	{
+  		"inputs": [],
+  		"name": "getBalance",
+  		"outputs": [
+  			{
+  				"internalType": "uint256",
+  				"name": "",
+  				"type": "uint256"
+  			}
+  		],
+  		"stateMutability": "view",
+  		"type": "function"
+  	},
+  	{
+  		"inputs": [],
+  		"name": "getLotteryId",
+  		"outputs": [
+  			{
+  				"internalType": "uint256",
+  				"name": "",
+  				"type": "uint256"
+  			}
+  		],
+  		"stateMutability": "view",
+  		"type": "function"
+  	},
+  	{
+  		"inputs": [],
+  		"name": "getPlayers",
+  		"outputs": [
+  			{
+  				"internalType": "address payable[]",
+  				"name": "",
+  				"type": "address[]"
+  			}
+  		],
+  		"stateMutability": "view",
+  		"type": "function"
+  	},
+  	{
+  		"inputs": [],
+  		"name": "getRandomNumber",
+  		"outputs": [
+  			{
+  				"internalType": "uint256",
+  				"name": "",
+  				"type": "uint256"
+  			}
+  		],
+  		"stateMutability": "view",
+  		"type": "function"
+  	},
+  	{
+  		"inputs": [],
+  		"name": "getWinners",
+  		"outputs": [
+  			{
+  				"internalType": "address[]",
+  				"name": "",
+  				"type": "address[]"
+  			}
+  		],
+  		"stateMutability": "view",
+  		"type": "function"
+  	},
+  	{
+  		"inputs": [],
+  		"name": "lotteryId",
+  		"outputs": [
+  			{
+  				"internalType": "uint256",
+  				"name": "",
+  				"type": "uint256"
+  			}
+  		],
+  		"stateMutability": "view",
+  		"type": "function"
+  	},
+  	{
+  		"inputs": [],
+  		"name": "minimumEntryFee",
+  		"outputs": [
+  			{
+  				"internalType": "uint256",
+  				"name": "",
+  				"type": "uint256"
+  			}
+  		],
+  		"stateMutability": "view",
+  		"type": "function"
+  	},
+  	{
+  		"inputs": [],
+  		"name": "owner",
+  		"outputs": [
+  			{
+  				"internalType": "address",
+  				"name": "",
+  				"type": "address"
+  			}
+  		],
+  		"stateMutability": "view",
+  		"type": "function"
+  	},
+  	{
+  		"inputs": [],
+  		"name": "pickWinner",
+  		"outputs": [],
+  		"stateMutability": "nonpayable",
+  		"type": "function"
+  	},
+  	{
+  		"inputs": [
+  			{
+  				"internalType": "uint256",
+  				"name": "",
+  				"type": "uint256"
+  			}
+  		],
+  		"name": "players",
+  		"outputs": [
+  			{
+  				"internalType": "address payable",
+  				"name": "",
+  				"type": "address"
+  			}
+  		],
+  		"stateMutability": "view",
+  		"type": "function"
+  	},
+  	{
+  		"inputs": [],
+  		"name": "treasury",
+  		"outputs": [
+  			{
+  				"internalType": "address payable",
+  				"name": "",
+  				"type": "address"
+  			}
+  		],
+  		"stateMutability": "view",
+  		"type": "function"
+  	},
+  	{
+  		"inputs": [
+  			{
+  				"internalType": "uint256",
+  				"name": "newFee",
+  				"type": "uint256"
+  			}
+  		],
+  		"name": "updateMinimumEntryFee",
+  		"outputs": [],
+  		"stateMutability": "nonpayable",
+  		"type": "function"
+  	},
+  	{
+  		"inputs": [
+  			{
+  				"internalType": "uint256",
+  				"name": "",
+  				"type": "uint256"
+  			}
+  		],
+  		"name": "winners",
+  		"outputs": [
+  			{
+  				"internalType": "address",
+  				"name": "",
+  				"type": "address"
+  			}
+  		],
+  		"stateMutability": "view",
+  		"type": "function"
+  	}
+  ];
 
-      const lotteryContract = new web3.eth.Contract(contractABI, contractAddress);
+        const lotteryContract = new web3.eth.Contract(contractABI, contractAddress);
 
-      try {
-        const playersList = await lotteryContract.methods.getPlayers().call();
-        setPlayers(playersList);
-      } catch (error) {
-        console.error('Error fetching players', error);
+        try {
+          const currentLotteryId = await lotteryContract.methods.lotteryId().call();
+          setLotteryId(currentLotteryId);
+        } catch (error) {
+          console.error('Error fetching current lottery ID', error);
+        }
       }
-    }
-  };
+    };
 
-
-  useEffect(() => {
-    fetchPlayers();
-  }, [web3]);
+    useEffect(() => {
+      fetchLotteryId(); // Fetch current lottery ID when the component mounts
+    }, [web3]);
 
   return (
     <div className={style.wrapper}>
       <div className={style.title}>
-        PWR-Ball{' '}
+        PWR-Ball 100 Draw{' '}
         <span className={style.textAccent}>#{lotteryId ? lotteryId : '0'}</span>
       </div>
       <div className={style.paragragh}>
