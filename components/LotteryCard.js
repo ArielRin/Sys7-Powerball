@@ -8,7 +8,7 @@ const LotteryCard = () => {
   const { lotteryId, lastWinner, lotteryPot, enterLottery, pickWinner } =
     useAppContext();
   const [web3, setWeb3] = useState(null);
-  const [players, setPlayers] = useState([]);
+  const [ players, setPlayers] = useState([]);
 
   // Initialize Web3 and set it to state
   useEffect(() => {
@@ -473,7 +473,7 @@ const LotteryCard = () => {
         <span className={style.textAccent}>#{lotteryId ? lotteryId : '0'}</span>
       </div>
       <div className={style.paragragh}>
-        Welcome to the System 7 PWR-Ball To enter, you'll need 100 PWR tokens. Drawn daily. If you're feeling lucky, you could be the next winner of the PWR-Ball jackpot
+        Welcome to the System 7 PWR-Ball To enter, youll need 100 PWR tokens. Drawn daily. If youre feeling lucky, you could be the next winner of the PWR-Ball jackpot
       </div>
       <div className={style.recentWinnerTitle}>
         Winner takes all!
