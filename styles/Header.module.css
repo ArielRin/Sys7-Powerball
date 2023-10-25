@@ -18,7 +18,7 @@
   font-size: 2rem;
   cursor: pointer;
   font-weight: bolder;
-  color: #f2505e;
+  color: #3c4fff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -53,6 +53,6 @@
 }
 
 .accentColor {
-  color: #f2505e;
+  color: #3c4fff;
   font-weight: bold;
 }

@@ -6,7 +6,7 @@ const Header = () => {
   const { address, connectWallet } = useAppContext()
   return (
     <div className={style.wrapper}>
-      <div className={style.titlewhite}>System 7 PWR Ball 777 </div>
+      <div className={style.titlewhite}>System 7 PWR Ball 100 </div>
       {!address ? (
         <ConnectWalletBtn connectWallet={connectWallet} />
       ) : (

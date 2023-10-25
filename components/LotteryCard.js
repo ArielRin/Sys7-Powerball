@@ -24,7 +24,7 @@ const LotteryCard = () => {
   // Function to handle the "Enter" button click
   const handleEnterLottery = async () => {
     if (web3) {
-      const contractAddress = '0x74556d3dd00567327cB7959E9694BaAb7e2CE537'; // Replace with your contract address
+      const contractAddress = '0xd7EA92A63371cC9324E9Fde3F69c7aDfBd77BAEc'; // Replace with your contract address
       const contractABI = [
       	{
       		"inputs": [],
@@ -201,7 +201,7 @@ const LotteryCard = () => {
       try {
         await lotteryContract.methods.enter().send({
           from: accounts[0],
-          value: web3.utils.toWei('777', 'ether'), // Sending 1 ETH, adjust as needed
+          value: web3.utils.toWei('100', 'ether'), // Sending 100 PWR, adjust as needed
         });
         console.log('Entered the lottery successfully');
       } catch (error) {
@@ -218,15 +218,15 @@ const LotteryCard = () => {
         <span className={style.textAccent}>#{lotteryId ? lotteryId : '0'}</span>
       </div>
       <div className={style.paragragh}>
-        Welcome to the System 7 PWR-Ball To enter, youll need 777 PWR tokens. Drawn every 3 days. If youre feeling lucky, you could be the next winner of the PWR-Ball jackpot
+        Welcome to the System 7 PWR-Ball To enter, youll need 100 PWR tokens. Drawn daily. If youre feeling lucky, you could be the next winner of the PWR-Ball jackpot
       </div>
       <div className={style.recentWinnerTitle}>
         Winner takes all!
       </div>
       <div className={style.pot}>
-        Pot 🍯: <span className={style.goldAccent}>{lotteryPot} PWR</span>
+        PWR Ball Jackpot at 🍯: <span className={style.goldAccent}>{lotteryPot} PWR</span>
       </div>
-      <div className={style.recentWinnerTitle}>🏆Last Winners🏆</div>
+      <div className={style.recentWinnerTitle}>Last Winners</div>
       {!lastWinner.length ? (
         <div className={style.winner}>No winner yet</div>
       ) : (

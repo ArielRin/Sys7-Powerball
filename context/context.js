@@ -43,9 +43,9 @@ export const AppProvider = ({ children }) => {
       await lotteryContract.methods.enter().send({
         from: address,
         // 500 PWR in Wei
-        value: '50000000000000000000',
+        value: '1010000000000000000',
         // 0.0003 ETH in Gwei
-        gas: 300000,
+        gas: 600000,
         gasPrice: null,
       });
       updateLottery();

@@ -53,7 +53,7 @@
   display: flex;
   justify-content: center;
   place-self: center;
-  color: #f45358;
+  color: #3c4fff;
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
@@ -62,7 +62,7 @@
   border-radius: 1.5rem;
   font-weight: bolder;
   font-size: 1.5rem;
-  border: 1px solid #f45358;
+  border: 1px solid #3c4fff;
 }
 
 .recentWinnerTitle {
@@ -78,11 +78,11 @@
   font-weight: bolder;
   color: #fff;
   text-align: center;
-  color: #f45358;
+  color: #3c4fff;
 }
 
 .textAccent {
-  color: #f45358;
+  color: #3c4fff;
 }
 
 .drawWinnerBtn {
@@ -92,11 +92,11 @@
   justify-content: center;
   margin: 0 auto;
   width: 20%;
-  border: 1px solid #f2505e;
+  border: 1px solid #3c4fff;
   border-radius: 1.2rem;
   padding: 10px 20px;
   font-size: 1.3rem;
   font-weight: bolder;
   cursor: pointer;
-  color: #f2505e;
+  color: #3c4fff;
 }
