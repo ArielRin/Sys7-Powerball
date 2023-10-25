@@ -9,6 +9,7 @@ const LotteryCard = () => {
     useAppContext();
   const [web3, setWeb3] = useState(null);
   const [ players, setPlayers] = useState([]);
+  const [ getPlayers] = useState([]);
   const [latestWinner, setLatestWinner] = useState(null); // To store the latest winner's address
   const [lotteryId, setLotteryId] = useState(0); // To store the current lottery ID
   // Initialize Web3 and set it to state
