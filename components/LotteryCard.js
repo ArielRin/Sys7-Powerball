@@ -9,6 +9,7 @@ const LotteryCard = () => {
     useAppContext();
   const [web3, setWeb3] = useState(null);
   const [ players, setPlayers] = useState([]);
+  const [latestWinner, setLatestWinner] = useState(null); // To store the latest winner's address
 
   // Initialize Web3 and set it to state
   useEffect(() => {
@@ -476,25 +477,14 @@ const LotteryCard = () => {
         Welcome to the System 7 PWR-Ball To enter, youll need 100 PWR tokens. Drawn daily. If youre feeling lucky, you could be the next winner of the PWR-Ball jackpot
       </div>
       <div className={style.recentWinnerTitle}>
-        Winner takes all!
+        Winner takes the Pot!
       </div>
-      <div className={style.pot}>
-        PWR Ball Jackpot at 🍯: <span className={style.goldAccent}>{lotteryPot} PWR</span>
+      <div className={style.paragragh}>
+        100PWR per Entry
       </div>
-      <div className={style.recentWinnerTitle}>Latest Winner</div>
-      {!lastWinner.length ? (
-        <div className={style.winner}>No winner yet</div>
-      ) : (
-        lastWinner.length > 0 && (
-          <div className={style.winner}>
-            {truncateEthAddress(lastWinner[lastWinner.length - 1])}
-          </div>
-        )
-      )}
       <div className={style.btn} onClick={handleEnterLottery}>
         Enter
       </div>
-      <div className={style.paragragh}>Total Entries in current draw: {players.length}</div>
     </div>
   );
 };
